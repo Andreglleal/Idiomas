@@ -13,8 +13,11 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
@@ -22,6 +25,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -45,6 +52,7 @@ class MainActivity : ComponentActivity() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Home() {
+    var menuExpanded by remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = {
@@ -60,14 +68,61 @@ fun Home() {
                         contentDescription = "Menu",
                         tint = White,
                         modifier = Modifier.clickable{
-
+                            menuExpanded = true
                         }
                     )
 
                     Column(
                         modifier = Modifier
                     ) {
-
+                        DropdownMenu(
+                            expanded = menuExpanded,
+                            onDismissRequest = { menuExpanded = false },
+                            modifier = Modifier.width(200.dp).background(White)
+                        ){
+                            DropdownMenuItem(
+                                text = {
+                                    Text( text = "Português")
+                                },
+                                leadingIcon = {
+                                    Image(
+                                        painter = painterResource(R.drawable.brasil),
+                                        contentDescription = "bandeira do brasil",
+                                        modifier = Modifier.size(30.dp)
+                                    )
+                                },
+                                onClick = {
+                                }
+                            )
+                            DropdownMenuItem(
+                                text = {
+                                    Text( text = "Inglês")
+                                },
+                                leadingIcon = {
+                                    Image(
+                                        painter = painterResource(R.drawable.eua),
+                                        contentDescription = "bandeira do brasil",
+                                        modifier = Modifier.size(30.dp)
+                                    )
+                                },
+                                onClick = {
+                                }
+                            )
+                            DropdownMenuItem(
+                                text = {
+                                    Text( text = "Espanhol")
+                                },
+                                leadingIcon = {
+                                    Image(
+                                        painter = painterResource(R.drawable.espanha),
+                                        contentDescription = "bandeira do brasil",
+                                        modifier = Modifier.size(30.dp)
+                                    )
+                                },
+                                onClick = {
+                                }
+                            )
+                        }
                     }
                 }
             )
