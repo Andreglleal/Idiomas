@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Idiomas</string>
+    <string name="idioma">Português(BR)</string>
+    <string name="descricao">Meu nome é André Gonçalves, eu moro no Brasil e sou Desenvolverdor Android.</string>
 </resources>
