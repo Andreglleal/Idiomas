@@ -164,8 +164,3 @@ fun Home() {
 }
 
 
-@Preview
-@Composable
-private fun HomePreview() {
-    Home()
-}
