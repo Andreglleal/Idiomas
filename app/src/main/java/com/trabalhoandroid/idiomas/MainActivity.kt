@@ -28,14 +28,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.trabalhoandroid.idiomas.datasource.LanguagePreferences
 import com.trabalhoandroid.idiomas.ui.theme.Blue
 import com.trabalhoandroid.idiomas.ui.theme.White
+import kotlinx.coroutines.launch
 
 
 class MainActivity : ComponentActivity() {
@@ -53,6 +57,8 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Home() {
     var menuExpanded by remember { mutableStateOf(false) }
+    val scope = rememberCoroutineScope()
+    val context = LocalContext.current
 
     Scaffold(
         topBar = {
@@ -92,6 +98,10 @@ fun Home() {
                                     )
                                 },
                                 onClick = {
+                                    scope.launch {
+                                        LanguagePreferences.saveLanguage(context = context, languageCode = "pt")
+                                        menuExpanded = false
+                                    }
                                 }
                             )
                             DropdownMenuItem(
@@ -106,6 +116,10 @@ fun Home() {
                                     )
                                 },
                                 onClick = {
+                                    scope.launch {
+                                        LanguagePreferences.saveLanguage(context = context, languageCode = "en")
+                                        menuExpanded = false
+                                    }
                                 }
                             )
                             DropdownMenuItem(
@@ -120,6 +134,10 @@ fun Home() {
                                     )
                                 },
                                 onClick = {
+                                    scope.launch {
+                                        LanguagePreferences.saveLanguage(context = context, languageCode = "es")
+                                        menuExpanded = false
+                                    }
                                 }
                             )
                         }
