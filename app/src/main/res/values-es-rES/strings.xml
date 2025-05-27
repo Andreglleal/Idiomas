@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Idiomas</string>
+    <string name="idioma">Español(BR)</string>
+    <string name="descricao">Mi nombre es André Gonçalves, vivo en Brasil y soy desarrollador Android.</string>
+</resources>
