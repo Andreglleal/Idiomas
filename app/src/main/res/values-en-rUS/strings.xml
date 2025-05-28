@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Idiomas</string>
-    <string name="idioma">English(BR)</string>
+    <string name="idioma">English</string>
     <string name="descricao">My name is André Gonçalves, I live in Brazil and I am an Android Developer.</string>
 </resources>

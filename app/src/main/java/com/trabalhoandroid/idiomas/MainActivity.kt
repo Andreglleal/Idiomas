@@ -6,7 +6,6 @@ import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.os.LocaleList
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -34,6 +33,7 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -70,6 +70,7 @@ fun Home() {
     // essa variavel é para o funcionamento do menu,ele sendo booleano, precisa de um estado
     var menuExpanded by remember { mutableStateOf(false) }
     var language by remember { mutableStateOf("") }
+    var flag by remember { mutableIntStateOf(R.drawable.bandeira1) }
     //essa variavel é para o funcionamento da corrotina pois o dataStore é assincrono (trad paralela)
     val scope = rememberCoroutineScope()
     // essa variavel é para pegar o contexto do dataStore
@@ -180,8 +181,19 @@ fun Home() {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
+            when (language){
+                "pt" -> {
+                    flag = R.drawable.bandeira1
+                }
+                "en" -> {
+                    flag = R.drawable.bandeira2
+                }
+                "es" -> {
+                    flag = R.drawable.bandeira3
+                }
+            }
             Image(
-                painter = painterResource(R.drawable.bandeira1),
+                painter = painterResource(flag),
                 contentDescription = "bandeira do brasil",
                 modifier = Modifier.size(300.dp)
             )
